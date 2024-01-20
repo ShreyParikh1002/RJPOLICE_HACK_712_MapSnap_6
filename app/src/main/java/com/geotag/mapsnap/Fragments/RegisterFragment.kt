@@ -76,7 +76,7 @@ class RegisterFragment : Fragment() {
         val nightSpinner: Spinner = v.findViewById(R.id.night)
 
         // Define the options for the spinner
-        val constantOptions = listOf("Select the constant element","Tree", "Building")
+        val constantOptions = listOf("Select the constant element","Plants","Tree", "Building")
         val nightOptions = listOf("Select if Night mode present","Yes", "No")
 
         // Create an ArrayAdapter using the string array and a default spinner layout

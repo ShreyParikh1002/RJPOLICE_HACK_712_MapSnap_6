@@ -3,10 +3,13 @@ package com.geotag.mapsnap
 import android.app.Dialog
 import android.content.ContentValues.TAG
 import android.content.Context
+import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
+import android.net.Uri
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
@@ -63,6 +66,7 @@ class MapFragment : Fragment() {
     var receivedList: MutableList<Camera> = mutableListOf()
     var cameraList: MutableList<Camera> = mutableListOf()
     lateinit var v: View
+
 
     var annotationApi : AnnotationPlugin? = null
     lateinit var annotaionConfig : AnnotationConfig
@@ -302,6 +306,12 @@ class MapFragment : Fragment() {
         dialog.findViewById<ImageButton>(R.id.close).setOnClickListener {
             dialog.dismiss()
         }
+        dialog.findViewById<Button>(R.id.collect).setOnClickListener {
+            val phoneNumber = cameraList[number].number
+            val dialIntent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:$phoneNumber"))
+            startActivity(dialIntent)
+        }
+
 
         dialog.findViewById<TextView>(R.id.owner).setText("Owner : "+cameraList[number].owner)
         dialog.findViewById<TextView>(R.id.model).setText("Camera Model : "+cameraList[number].model)

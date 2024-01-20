@@ -87,7 +87,10 @@ public class ShowData extends AppCompatActivity {
                                                     String json = gson.toJson(cameraList);
                                                     editor.putBoolean("check",true);
                                                     editor.putString("list", json);
+                                                    editor.putString("latitude",Double.toString(camera.latitude));
+                                                    editor.putString("longitude",Double.toString(camera.longitude));
                                                     editor.apply();
+
                                                 }
                                             } else {
                                                 Log.e("TAG", "Error getting document: ", task.getException());
